@@ -1,7 +1,17 @@
+import { urlFor } from '@/lib/sanityClient'
+
 export default function HeroSection({ data }: { data: any }) {
+  const imageUrl = data?.heroImage ? urlFor(data.heroImage) : null
+
   return (
-    <section className="min-h-screen bg-gradient-to-br from-blue-700 to-blue-900 flex items-center justify-center text-white text-center px-6 pt-20">
-      <div className="max-w-3xl">
+    <section
+      style={{
+        backgroundImage: imageUrl ? `url(${imageUrl})` : undefined,
+      }}
+      className="relative min-h-screen bg-blue-700 bg-cover bg-center flex items-center justify-center text-white text-center px-6 pt-20"
+    >
+      <div className="absolute inset-0 bg-black/50" />
+      <div className="relative max-w-3xl z-10">
         <span className="text-blue-300 uppercase tracking-widest text-sm font-semibold mb-4 block">
           Healthcare Revenue Solutions
         </span>
