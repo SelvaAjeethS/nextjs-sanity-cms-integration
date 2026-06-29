@@ -6,45 +6,29 @@ A production-ready demo of headless CMS architecture using **Next.js App Router*
 
 ## Live Demo
 
-[View Live Site](https://your-vercel-url.vercel.app)
+[View Live Site](https://nextjs-sanity-cms-integration.vercel.app/)
 
 ---
 
 ## Architecture
 
-┌─────────────────────┐ ┌──────────────────────┐
+````
+```
+Sanity Studio (rcm-studio)          Next.js Frontend (rcm-frontend)
+─────────────────────────           ────────────────────────────────
+Content Schemas:                    Pages:
+  - Hero                              - app/page.tsx
+  - Services              API
+  - Why Choose Us        ────▶       Components:
+  - Contact Section                   - Navbar
+                                      - HeroSection
+Hosted on:                            - ServicesSection
+  sanity.io cloud                     - WhyUsSection
+                                      - ContactSection
 
-│ Sanity Studio │ │ Next.js Frontend │
-
-│ (rcm-studio) │──API──▶ │ (rcm-frontend) │
-
-│ │ │ │
-
-│ Content Schemas: │ │ Pages: │
-
-│ - Hero │ │ - app/page.tsx │
-
-│ - Services │ │ │
-
-│ - Why Choose Us │ │ Components: │
-
-│ - Contact Section │ │ - Navbar │
-
-│ │ │ - HeroSection │
-
-│ Hosted on: │ │ - ServicesSection │
-
-│ sanity.io cloud │ │ - WhyUsSection │
-
-└─────────────────────┘ │ - ContactSection │
-
-│ │
-
-│ Hosted on: Vercel │
-
-└──────────────────────┘
-
----
+                                    Hosted on: Vercel
+```
+````
 
 ## Tech Stack
 
