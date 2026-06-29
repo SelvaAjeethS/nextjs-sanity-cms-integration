@@ -5,12 +5,13 @@ import WhyUsSection from '@/components/WhyUsSection'
 import ContactSection from '@/components/ContactSection'
 import Navbar from '@/components/Navbar'
 
+// re-fetch from Sanity every 30 seconds 
 async function getData() {
   const [hero, services, whyUs, contact] = await Promise.all([
-    client.fetch(`*[_type == "hero"][0]`),
-    client.fetch(`*[_type == "service"] | order(order asc)`),
-    client.fetch(`*[_type == "whyUs"]`),
-    client.fetch(`*[_type == "contactSection"][0]`),
+    client.fetch(`*[_type == "hero"][0]`, {}, { next: { revalidate: 30 } }),
+    client.fetch(`*[_type == "service"] | order(order asc)`, {}, { next: { revalidate: 30 } }),
+    client.fetch(`*[_type == "whyUs"]`, {}, { next: { revalidate: 30 } }),
+    client.fetch(`*[_type == "contactSection"][0]`, {}, { next: { revalidate: 30 } }),
   ])
   return { hero, services, whyUs, contact }
 }
